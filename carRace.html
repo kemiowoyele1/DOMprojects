@@ -29,6 +29,22 @@
         z-index: 20;
        
       }
+       #overlay2{
+        background-image: url(back1.jpg);
+         background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+         opacity: 0.9;
+        text-align: center;
+        text-shadow: 2px 2px 2px teal, -2px -2px -2px teal;
+        font-size: 200px;
+        z-index: 200;
+      
+      }
     #track{
         height: 50vh;
         top: 15vh;
@@ -48,7 +64,7 @@
     height: 30vh;
     position: absolute;
       margin-top: 10vh; 
-      background-image: url("3.gif");
+      background-image: url("0.gif");
     position: absolute;
      background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -108,9 +124,16 @@
       margin-left: 1000vw;
     }
   }
+  audio{
+    visibility: hidden;
+  }
+  #overlay2 > p{
+    margin-top :40vh;
+  }
 </style>
 <body>
   <div id="overlay"></div>
+  <div id="overlay2"><p>click me to start</p></div>
         <div id="track">
             <div id="myCar"></div>
         </div>
@@ -118,6 +141,10 @@
         <button id="down">down</button>
  -->        <button id="forward">forward</button>
         <button id="reverse">reverse</button>
+         <audio controls  id="play1" autoplay="true" loop="true"><source src="Monster.mp3" type="audio/mp3"></audio>
+  <audio controls id="pop"><source src="car2.mp3" type="audio/mp3"></audio>
+ <audio controls id="play2"><source src="truck.mp3" type="audio/mp3"></audio>
+
         <script>
 
     function Car(carColor){
@@ -188,6 +215,12 @@ blueCar.show();
 // blueCar.move(500);
 var forward = document.getElementById("forward");
 var myCar = document.getElementById("myCar");
+var reverse = document.getElementById("reverse");
+var pop = document.getElementById("pop");
+var play1 = document.getElementById("play1");
+var play2 = document.getElementById("play2");
+var overlay2 = document.getElementById("overlay2");
+
 var scrollMove = 0;
 carPos = 200;
 forward.addEventListener("click", function(){
@@ -204,7 +237,8 @@ var winW = window.innerWidth;
    if (carPos > 20000) {
      alert("end of road")
    }
-// var win = window.clentY;
+   play2.play();
+   play1.pause();
 console.log(scrollMove);
   
     
@@ -219,7 +253,16 @@ reverse.addEventListener("click", function(){
   if (carPos <= 0) {
      alert("end of road")
    }
+   play2.play();
+   play1.pause();
   })
+myCar.addEventListener("click", function(){
+  pop.play();
+})
+overlay2.addEventListener("click", function(){
+  play1.play();
+  overlay2.style.display = "none";
+})
 </script>
  
 </body>
