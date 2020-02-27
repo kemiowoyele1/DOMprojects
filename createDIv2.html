@@ -108,7 +108,7 @@
   var theThing = document.querySelector('#ball');
   var container = document.querySelector('#container');
   var remove = document.querySelector('#remove');
-container.addEventListener('click', getClickPosition, false);
+container.addEventListener('mousemove', getClickPosition, false);
 function getClickPosition(e){
 // console.log(e);
   
@@ -126,9 +126,9 @@ function getClickPosition(e){
      
   // console.log(box);
   container.appendChild(box);
-  // setTimeout(() => {
-  //   container.removeChild(box);
-  // }, 2000);
+  setTimeout(() => {
+    container.removeChild(box);
+  }, 2000);
   // remove.addEventListener("click", function(){
   //     container.innerHTML = "";
 //   container.removeChild(box);
