@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+<style>
+    
+        h1{
+            color: red;
+        }
+       .myList{
+           font-size: 100px;
+           color: green;
+           border: 5px solid blue;
+           background-color: tan;
+       }
+    img{
+        width:200px;
+        height: 200px;
+        margin-left: 200px;
+    }
+     #container{
+         width: 80vw;
+         height: 100vh;
+         background-color: tan;
+         margin: 0;
+         border: 5px solid red;
+     }
+    </style>
+</head>
+<body>
+    <!-- <h1 id="dom_1">
+        Hello
+    </h1>
+    <h1 id="dom_2">
+        Hello
+    </h1>
+<img src="bear.png" alt="a white polar bear" id="myImage"> -->
+<div id="container">
+
+<h1 id="ask">what is your favorite color</h1>
+ <input type="text" id="colorInput">
+ <button id="changeColor">change color</button>
+
+</div>
+<!-- <script src="index.js"></script> -->
+<script> 
+    var container = document.getElementById("container");
+  var colorInput = document.getElementById("colorInput");
+  var changeColor = document.getElementById("changeColor");
+ var ask = document.getElementById("ask");
+
+changeColor.addEventListener('click', function(){
+    // console.log(colorInput.value);
+    myColor = colorInput.value
+    container.style.backgroundColor = myColor;
+    ask.textContent = "my favorite color is "  + myColor;
+    colorInput.style.display = "none";   
+})
+</script>
+</body>
+</html>

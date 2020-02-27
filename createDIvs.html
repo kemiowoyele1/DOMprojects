@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+	<title>baby magic word balloon</title>
+</head>
+<style >
+ 
+  body{
+    background-color: violet;
+    cursor:pointer;
+  }
+  #container{
+     position: absolute;
+     height: 100vh;
+     width: 100vw;
+     top: 0;
+     left: 0;
+        padding: 0;
+        margin: 0;
+        border: 3px solid rgba(0,55,55,1);
+      box-sizing: border-box;
+      overflow: hidden;
+  }
+/*  a little styling for the dynasmically created div*/
+ #boxes{
+     width: 100px;
+    height: 100px;
+       position: absolute;
+   background-repeat: no-repeat;
+        background-size:100% 100%;
+        background-image:url(../images/1.png);
+        z-index: 20;
+        display: block;
+       /*background-image: radial-gradient(rgba(55,55,100,0.3) 30%, rgba(100,55,155,0.6) 60%, rgba(100,55,200,1) 90%);*/
+      border: 10px solid transparent;
+      border-radius: 50%;
+     
+  }
+  /*use :after to create the small curvy line that makes it look like a bubble*/
+   #boxes:after {
+      position: absolute;
+      content: "";
+      top: 20%;
+      right: 25%;
+      width: 33%;
+      height: 33%;
+      border: 3px solid;
+      border-color:rgba(205,155,255,0.8) transparent transparent transparent;
+      border-radius: 50%;
+      transform: rotate(45deg);
+      }
+      #remove{
+      z-index: 50;
+      position: absolute;
+      padding: 30px;
+      font-size: 30px;
+      background-color: hsla(200deg,60%,60%,0.9);
+      }
+</style>
+<body id="b" >
+  <button id="remove">remove</button>
+
+ <div id="container"><div> 
+
+<script >
+ //select the necesary elements
+
+   var container = document.querySelector('#container');
+  var remove = document.querySelector('#remove');
+
+  // add a mousemove event listener to the container
+
+container.addEventListener('mousemove', function getClickPosition(e){
+// console.log(e);
+  // dynamically create a div and append it to the container Element
+     var box = document.createElement("div");
+    box.id = "boxes";
+    // e.clientX will help you get the position of the mouse from the left of the screen
+     var xPosition = e.clientX - 100;
+      // e.clientX will help you get the position of the mouse from the left of the screen
+   // 70 is deducted to ensure that the pointer is at the middle of the div
+   var yPosition = e.clientY - 100;
+
+    //make the div appear at the mouse click position
+       box.style.top = yPosition + "px";
+ box.style.left = xPosition + "px";
+ //get a random color from 0 to 360 to get A random hue for the hsl color system
+  var colorRandom  = Math.ceil(Math.random()*360)
+ // we are using radial gradient as the background image. So different transparency for the same color will give the required effect
+   box.style.backgroundImage = "radial-gradient(hsl("+ colorRandom + ",100%, 30%, 1) 20%,hsl("+ colorRandom + ",100%, 30%, 0.7) 50%,hsl("+ colorRandom + ",100%, 30%, 0.4) 80%)";
+   
+  container.appendChild(box);
+  remove.addEventListener("click", function(){
+// container.removeChild(box);
+container.innerHTML= "";
+})
+});
+
+
+</script>
+
+</body>
+</html>

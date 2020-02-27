@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>forms</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+   
+    }
+    body{
+        background-image: radial-gradient(rgba(0,255,0,1) 30%, rgba(10,200,5,1) 60%, rgba(10,255,10,1) 90%) ;
+    background-size: 5px 5px;
+        background-repeat: repeat;
+        width: 20000px;
+       
+      }
+    #overlay{
+        background-image: url(back.jpg);
+         background-size: 5% 100%;
+        background-repeat: repeat;
+        position: absolute;
+        top: -15vh;
+        left: 0;
+        height: 50vh;
+        width: 20000px;
+        z-index: 20;
+       
+      }
+    #track{
+        height: 50vh;
+        top: 15vh;
+        left: 0;
+         position: absolute;
+      min-width: 20000px;
+        background-image: linear-gradient(rgba(0,5,0,1) 40%, rgba(150,150,150,1) 50%, rgba(0,0,0,1) 60%) ;
+        background-size: 100% 100%;
+        background-repeat: repeat;
+        background-color: red;
+          z-index: 50;
+      
+   }
+   #myCar{
+    left: 200px;
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+      margin-top: 10vh; 
+      background-image: url("3.gif");
+    position: absolute;
+     background-size: 100% 100%;
+        background-repeat: no-repeat;
+   z-index: 50;
+
+      } 
+      .upMove{
+        transition: left 1s;
+    
+   
+      }
+.carStyles{
+    margin-left: 0;
+     transition:  margin-left 1s; 
+    width: 25vw; 
+    height: 100px;
+    position: absolute;
+     /* margin-top: 50px; */
+    animation: car 10s infinite;
+    /*animation-fill-mode: forwards;*/
+    background-size: 100% 100%;
+        background-repeat: no-repeat;
+  
+      } 
+      button{
+          padding: 20px;
+          font-size: 20px;
+          color: rgb(7, 44, 7);
+          background-color: rgb(192, 178, 141);
+          min-width: 100px;
+          text-align: center;
+          position: fixed;
+          border-radius: 15%;
+          font-weight: bolder;
+      }
+      #up{
+          left:40vw;
+          top: 68vh;
+      }
+      #down{
+          left:40vw;
+          top: 85vh;
+      }
+      #forward{
+          left:70vw;
+          top: 73vh;
+      }
+      #reverse{
+          left:20vw;
+          top: 73vh;
+      }
+@keyframes car {
+    0%{
+      margin-left: 0px;
+    }
+    100% {
+      margin-left: 1000vw;
+    }
+  }
+</style>
+<body>
+  <div id="overlay"></div>
+        <div id="track">
+            <div id="myCar"></div>
+        </div>
+       <!--  <button id="up">up</button>
+        <button id="down">down</button>
+ -->        <button id="forward">forward</button>
+        <button id="reverse">reverse</button>
+        <script>
+
+    function Car(carColor){
+   this.color = carColor;
+   this.distanceCovered = 0;
+   this.distanceVariable = 0;
+   this.newCar;
+
+    }
+
+    Car.prototype.show = function(){
+        let top1  = Math.ceil(Math.random()*160)
+        let car1  = Math.ceil(Math.random()*3)
+   
+        this.newCar = document.createElement("div");
+        this.newCar.id = "car";
+          
+        // this.newCar.style.height = "80px";
+        // this.newCar.style.width = "120px";
+        this.newCar.style.marginTop = top1 + "px";
+        this.newCar.style.backgroundImage = `url("${car1}.gif")`;
+         this.newCar.classList.add("carStyles")
+//add car to track
+let track = document.getElementById("track");
+track.appendChild(this.newCar);
+if(this.newCar.style.marginLeft == "1000vw"){
+this.newCar.style.displat == "none";
+}
+
+}
+
+// //to move the car
+Car.prototype.move = function(distance){
+    this.distanceCovered = this.distanceCovered + distance;
+    this.newCar.style.marginLeft = this.distanceCovered + "px";
+}
+// //run app
+// let redCar;
+// let blueCar;
+// window.onload = () => {
+    let redCar =  new Car("red");
+   
+    setTimeout(function(){
+        redCar.show();
+    },3000)
+    redCar.show();
+
+     let greenCar =  new Car("red");
+
+    setTimeout(function(){
+        greenCar.show();
+    },300);
+     let purpleCar =  new Car("red");
+     setTimeout(function(){
+        purpleCar.show();
+    },1000);
+    
+     let greyCar =  new Car("red");
+setTimeout(function(){
+        greyCar.show();
+    },2300);
+
+let blueCar =  new Car("blue");
+setTimeout(function(){
+        blueCar.show();
+    },2300)//}
+blueCar.show();
+// blueCar.move(500);
+var forward = document.getElementById("forward");
+var myCar = document.getElementById("myCar");
+var scrollMove = 0;
+carPos = 200;
+forward.addEventListener("click", function(){
+    // var carRect = myCar.getBoundingClientRect();
+    // var carMove = carRect.right;
+var winW = window.innerWidth;
+      
+    carPos+=50;
+   myCar.style.left = `${carPos}px`;
+   // myCar.classList.add(upMove);
+   console.log(carPos);
+  scrollMove +=50;
+   window.scrollTo( scrollMove ,50);
+   if (carPos > 20000) {
+     alert("end of road")
+   }
+// var win = window.clentY;
+console.log(scrollMove);
+  
+    
+ })
+reverse.addEventListener("click", function(){
+   carPos-=50;
+   myCar.style.left = `${carPos}px`;
+   console.log(carPos);
+  scrollMove -=50;
+   window.scrollTo( scrollMove ,50);
+  console.log(scrollMove);
+  if (carPos <= 0) {
+     alert("end of road")
+   }
+  })
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>assignment 15/1/2020</title>
+</head>
+<style >
+	body{
+		background-color: #99ffff;
+	}
+	.wrapper{
+        background-color: #66dddd;
+        width: 60vw;
+        height: 90vh;
+        margin:5vh 20vw;
+        text-align: center;
+        color: #226666;
+        border: 5px solid #339999;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px #226666;
+        font-size: 30px;
+	}
+	h1{
+		font-size: 50px;
+  
+	text-shadow: 0 0 10px #00b3ff,
+				 0 0 20px #00b3ff,
+				 0 0 40px #00b3ff,
+				 0 0 80px #00b3ff,
+				 0 0 120px #00b3ff,
+				 0 0 200px #00b3ff,
+				 0 0 300px #00b3ff,
+				 0 0 400px #00b3ff;
+ 
+	}
+	input{
+		width:60%;
+		height: 50px;
+		margin-top: 50px;
+		margin-left: 20%;
+		display: block;
+		font-size: 30px;
+	}
+	button{
+		padding: 10px;
+		font-size: 30px;
+		margin: 30px;
+		background-color: #339999;
+		color: #226666;
+		border-radius: 20%;
+		border: 2px solid silver;
+		text-shadow: 1px 1px silver
+
+	}
+	#wrapper3 input{
+			margin-top: -20px;
+			margin-bottom: -20px;
+	
+	}
+	#wrapper3 button{
+			margin-top: -15px;
+			margin-bottom: -15px;
+	
+	}
+	#wrapper3{
+		height: 70vh;
+	}
+	/*@keyframes animate {
+  0%, 100% {
+	color: #fff;
+	filter: blur(2px);
+	text-shadow: 0 0 10px #00b3ff,
+				 0 0 20px #00b3ff,
+				 0 0 40px #00b3ff,
+				 0 0 80px #00b3ff,
+				 0 0 120px #00b3ff,
+				 0 0 200px #00b3ff,
+				 0 0 300px #00b3ff,
+				 0 0 400px #00b3ff;
+  }
+  5%, 95% {
+	color: #000000;
+	filter: blur(0px);
+	text-shadow: none;
+  }
+}*/
+</style>
+<body>
+	<form id="form">
+	<div class="wrapper" id="wrapper1">
+		<h1>login form</h1>
+<input type="text" name="square" id="name" placeholder="name">
+<input type="email" name="square" id="email" placeholder="email">
+<input type="password" name="square" id="password" placeholder="password">
+<button>submit</button>
+<!-- <div id="displayHalf">display answer</div>
+ --></div>
+	</form>
+
+
+<script >
+let form = document.getElementById('form');
+let login = {};
+form.addEventListener("submit", (e) =>{
+	e.preventDefault();
+    console.log(e);
+// console.log(e.target[0].id,e.target[0].value);
+// console.log(e.target[1].id,e.target[1].value);
+// console.log(e.target[2].id,e.target[2].value);
+let login[e.target[0].id] = e.target[0].value;
+console.log(login);
+});
+</script>
+</body>
+</html>

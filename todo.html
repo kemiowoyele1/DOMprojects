@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todo list with brigth</title>
+</head>
+<body>
+	<style >
+    *{
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+		body{
+		/*	background-image: rgba(231,56,39,1) 0%, rgba(240,47,23,1) 29%, rgba(246,41,12,1) 49%, rgba(241,111,92,1) 50%, rgba(248,80,50,1) 100%);
+		*/
+background-image: radial-gradient(rgba(41,211,192,1) 0%, rgba(41,211,192,1) 29%, rgba(41,211,192,1) 49%, rgba(41,211,192,1) 50%, rgba(48,120,130,1) 100%);
+min-height: 100vh;
+font-size: 2em;
+  }
+  #container{
+    width: 90%;
+    margin: 5%;
+
+  }
+		.del{
+			color: red;
+			float: right;
+			cursor: pointer;
+      font-weight: bolder;
+      font-size: 40px;
+
+		}
+    input{
+      width: 80%;
+      height: 50px;
+      margin-left: 10%;
+      margin-top: 10px;
+      font-size: 30px;
+      border: 1px solid teal;
+      border-radius: 10px;
+     }
+    #btn{
+      width: 10%;
+       color: tan;
+       background-color: teal;
+    
+    }
+    li{
+      list-style: none;
+      background-color: wheat;
+      border: 2px solid teal;
+      border-radius: 10px;
+      padding: 10px;
+      width: 80%;
+      margin-left: 10%;
+      margin-top: 20px;
+      color: teal;
+      word-wrap: break-word;
+    }
+
+	</style>
+    <div id="container">
+        <form>
+        <input type="text" name=""  placeholder="task">
+        <input type="submit" name="" value="add" id="btn">
+        <ul class="todos"></ul>
+      </form>
+
+    </div>
+      <script>
+      	let taskTitle = document.querySelector('input');
+      	let addButton = document.querySelector("#btn");
+        let todos = document.querySelector(".todos");
+        // let item = document.querySelector("")
+
+//          const del = () => {
+//   	let delIcon = document.querySelectorAll('.del');
+//   	delIcon.forEach((item) => {
+//     item.parentElement.remove();
+//   	})
+// }
+      	const add = () => {
+      		if(taskTitle.value.length < 5 || taskTitle.value ==""){
+alert("task cannot be empty");
+      			}else{
+      		let li = document.createElement("li");
+      		let span = document.createElement('span');
+      		span.textContent = "x";
+      		span.className = "del";
+      		let task = document.createTextNode(taskTitle.value);
+      		li.appendChild(task);
+      		todos.appendChild(li);
+      		li.appendChild(span);
+      		taskTitle.value = "";
+            // del();
+        };
+      	};
+      	addButton.onclick	= (e) => {
+      				e.preventDefault();
+      				add();
+      			
+      	
+      	
+      	}
+    todos.addEventListener("click", (e) => {
+    	if (e.target.className == "del") {
+    		e.target.parentElement.remove();
+    	}
+    })
+
+
+
+      </script>
+  
+</body>
+</html>
